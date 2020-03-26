@@ -1,0 +1,54 @@
+# This is a Guess the Number game.
+
+'''
+本章目的：
+製作一支猜數字的遊戲
+
+程式功能：
+1. 電腦可以隨機設定1~20的數字讓使用者猜
+2. 每次猜完後，電腦會提示使用者所猜的數字比電腦設定的神秘數字高或低
+3. 如果在6次內猜到就算贏了
+
+教學重點：
+1. random的使用
+2. for迴圈的使用
+3. if 的使用
+
+'''
+
+
+
+import random
+
+guessesTaken = 0 #設定猜測的次數 = 0 
+
+print('嗨。您的貴姓大名')
+
+myName = input()
+
+number = random.randint(5, 30) #電腦設定好神祕數字 
+
+
+print('恩, ' + myName + ', 我正在想一個數字介於5到30, 請你猜猜看?')
+
+for guessesTaken in range(10):
+    print('猜猜看') # Four spaces in front of "print".
+    guess = input()
+    guess = int(guess)
+
+    if guess < number:
+        print("你猜的數字太小了") # Eight spaces in front of "print"
+
+    if guess > number:
+        print("你猜的數字太大了")
+
+    if guess == number:
+        break
+
+if guess == number:
+    guessesTaken = str(guessesTaken + 1)
+    print("太棒了， " + myName + "! 您猜第 " + guessesTaken +"次就猜中了，真是厲害")
+
+if guess != number:
+    number = str(number)
+    print("抱歉喔，我的神祕數字是" + number + " 您沒猜中真是可惜啊~~~")
